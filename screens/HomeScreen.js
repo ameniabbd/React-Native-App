@@ -4,8 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Chevron from "react-chevron";
 // Import vector icons
-import { FontAwesomeIcon } from "react-native-vector-icons/FontAwesome";
-
+import { Entypo } from '@expo/vector-icons';
+import tw from 'twrnc';
 const HomeScreen = () => {
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -20,34 +20,25 @@ const HomeScreen = () => {
   });
 
   return (
-    <View>
-      <Text className="text-red-500"></Text>
-      <Image
-        source={{
-          uri: "https://blog.ippon.fr/content/images/2016/04/react-javascript.png",
-        }}
-        style={"h-7 w-7 bg-gray-300 p-4 rounded-full"}
-      />
-      {/*     <View className="flex pb-3 items-center mx-4 space-x-2">
+    <SafeAreaView>
+      <Text className="container h-12 justify-center bg-slate-300 items-center">
+        <View className="flex pb-3 items-center mx-4 space-x-2">
           <Image
+         style={tw`p-4 h-7 w-7 bg-red-300 rounded-full`}
             source={{
               uri: "https://blog.ippon.fr/content/images/2016/04/react-javascript.png",
             }}
-            className="h-7 w-7 bg-gray-300 p-4 rounded-full"
           />
           <View>
             <Text className=" font-bold  text-gray-400 text-xs">
               Deliver Now
             </Text>
-            <Text className=" font-bold  text-xl">
-              Current Location
-              <FontAwesomeIcon icon="fa-thin fa-chevron-down" />
-            </Text>
+            <Text className=" font-bold  text-xl">Current Location</Text>
+            <Entypo name="chevron-down" size={24} color="black" />
           </View>
-          <FontAwesomeIcon icon="fa-thin fa-chevron-down" />
         </View>
-      </Text> */}
-    </View>
+      </Text>
+    </SafeAreaView>
   );
 };
 
