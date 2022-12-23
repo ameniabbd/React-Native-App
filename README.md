@@ -1,3 +1,5 @@
 # React-Native-App
-FrontEnd:React-Native
-BackEnd:Sanity
+#FrontEnd:React-Native
+
+
+#BackEnd:Sanity
