@@ -1,13 +1,18 @@
 import { View, Image, ScrollView, TouchableOpacity, Text } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { urlFor } from "../sanity/sanity";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import DishRow from "../components/DishRow";
-
+import BasketIcon from "../components/BasketIcon";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import {setRestaurant} from '../features/restaurantSlice';
+
 const RestaurantScreen = () => {
+  const navigation = useNavigation();
+  const dispatch=useDispatch()
   const {
     params: {
       id,
@@ -23,8 +28,29 @@ const RestaurantScreen = () => {
     },
   } = useRoute();
 
-  const navigation = useNavigation();
+  useEffect(() => {
+  dispatch(setRestaurant(
+    
+    {
+      
+        id,
+        imgUrl,
+        title,
+        rating,
+        genre,
+        address,
+        short_description,
+        dishes,
+        long,
+        lat,
+      
+    }
+  ))
+  }, [dispatch]);
+ 
   return (
+    <>
+    <BasketIcon />
     <ScrollView>
       <View style={tw`relative`}>
         <Image
@@ -79,7 +105,7 @@ const RestaurantScreen = () => {
           <AntDesign name="right" size={20} color="gray" />
         </TouchableOpacity>
       </View>
-      <View>
+      <View style={tw`pb-36`}>
         <Text style={tw`px-4 pt-6 mb-3 font-bold text-xl`}>Menu</Text>
 
         {/** dishes rows */}
@@ -96,6 +122,7 @@ const RestaurantScreen = () => {
         ))}
       </View>
     </ScrollView>
+    </>
   );
 };
 

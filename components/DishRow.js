@@ -5,8 +5,27 @@ import { AntDesign } from "@expo/vector-icons";
 import tw from "twrnc";
 
 import { urlFor } from "../sanity/sanity";
+import { useDispatch, useSelector } from "react-redux";
+import { addToBasket, removeFromBasket, selectBasketItemsWithId } from "../features/basketSlice";
+
 const DishRow = ({ id, name, description, price, image }) => {
   const [isPressed, setisPressed] = useState();
+  const items=useSelector((state)=>selectBasketItemsWithId(state,id));
+  const dispatch=useDispatch();
+
+  const addItemToBasket=()=>{
+dispatch(addToBasket({id,name,description,price,image}))
+
+  };
+
+  const removeItemFromBasket=()=>{
+    if(!items.length>0)return;
+    dispatch(removeFromBasket({id}))
+    
+      };
+
+     
+ 
   return (
     <>
       <TouchableOpacity
@@ -36,12 +55,16 @@ const DishRow = ({ id, name, description, price, image }) => {
       {isPressed && (
         <View style={tw`bg-white px-4`}>
           <View style={tw`flex-row items-center space-x-2 pb-3`}>
-            <TouchableOpacity>
-              <AntDesign name="minuscircle" size={30} color="#D6955B" />
+            <TouchableOpacity onPress={removeItemFromBasket}
+            disabled={!items.length} >
+              <AntDesign name="minuscircle" size={24} 
+              color={items.length>0 ? "#FFBF66":"gray"}
+      
+               />
             </TouchableOpacity>
-            <Text>0</Text>
-            <TouchableOpacity>
-              <AntDesign name="pluscircle" size={30} color="#D6955B" />
+            <Text> {items.length} </Text>
+            <TouchableOpacity onPress={addItemToBasket}>
+              <AntDesign name="pluscircle" size={24} color="#FFBF66" />
             </TouchableOpacity>
           </View>
         </View>
