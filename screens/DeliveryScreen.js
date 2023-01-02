@@ -63,7 +63,7 @@ const DeliveryScreen = () => {
                 />
                 <View style={tw` flex-1`}>
                     <Text style={tw` text-lg mx-4`}>
-                        Ameni abdelghani
+                        Ameni Abdelghani
                     </Text>
                     <Text style={tw` text-gray-400 mx-4`}>
                         Your Rider 
