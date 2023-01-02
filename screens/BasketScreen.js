@@ -25,6 +25,7 @@ const BasketScreen = () => {
   const restaurant = useSelector(selectRestaurant);
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
+
   const [groupeItemsInBasket, setGroupeItemsInBasket] = useState([]);
   const dispatch = useDispatch();
 
@@ -106,7 +107,6 @@ const BasketScreen = () => {
         </ScrollView>
 
         <View style={tw`p-5 bg-white mt-5 space-y-4 `}>
-
           <View style={tw`flex-row justify-between space-y-2`}>
             <Text style={tw`text-gray-400 `}>Subtotal</Text>
             <Text style={tw`text-gray-400 `}>
@@ -128,7 +128,10 @@ const BasketScreen = () => {
             </Text>
           </View>
 
-          <TouchableOpacity style={tw`rounded-xs bg-[#00CCBB] p-2`}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("PreparingOrder")}
+            style={tw`rounded-xs bg-[#00CCBB] p-2`}
+          >
             <Text style={tw`text-white text-center text-lg font-bold`}>
               Place Order{" "}
             </Text>
