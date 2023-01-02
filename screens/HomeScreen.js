@@ -36,7 +36,7 @@ const HomeScreen = () => {
       .then((data) => setFeaturedCategories(data))
       .catch(console.error);
   }, [0]);
-  console.log(featuredCategories);
+ 
   return (
     <SafeAreaView style={tw`bg-white pt-6`}>
       {/** header */}
