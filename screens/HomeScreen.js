@@ -38,7 +38,7 @@ const HomeScreen = () => {
   }, [0]);
   console.log(featuredCategories);
   return (
-    <SafeAreaView tyle={tw`bg-white pt-6`}>
+    <SafeAreaView style={tw`bg-white pt-6`}>
       {/** header */}
 
       <View style={tw`flex-row pb-3 items-center mx-4 px-2 space-x-2 `}>
